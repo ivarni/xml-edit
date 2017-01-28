@@ -1,7 +1,21 @@
 import sax from 'sax';
 import { createReadStream } from 'fs';
+import { writable } from 'is-stream';
 
 const _write = (opts, filePath, definition, stream) => {
+    if (!filePath) {
+        throw new Error('Please provide a filePath');
+    }
+    if (!definition) {
+        throw new Error('Please provide a definition object');
+    }
+    if (!stream) {
+        throw new Error('Please provide a stream');
+    }
+    if (!writable(stream)) {
+        throw new Error('Please provide a writable stream');
+    }
+
     const print = (chars) => {
         stream.write(chars);
     };
@@ -15,7 +29,7 @@ const _write = (opts, filePath, definition, stream) => {
 
     return new Promise((resolve, reject) => {
         const saxStream = sax.createStream(
-            opts.strict || true,
+            (opts.strict !== false),
             { trim: true },
         );
         const indentation = opts.indentation || 2;
@@ -67,8 +81,12 @@ const _write = (opts, filePath, definition, stream) => {
 
 const _read = (opts, filePath) =>
     new Promise((resolve, reject) => {
+        if (!filePath) {
+            throw new Error('Please provide a filePath');
+        }
+
         const saxStream = sax.createStream(
-            opts.strict || true,
+            (opts.strict !== false),
             { trim: true },
         );
 
@@ -100,7 +118,7 @@ const _read = (opts, filePath) =>
         createReadStream(filePath).pipe(saxStream);
     });
 
-export const getInstance = opts => ({
+export const getInstance = (opts = {}) => ({
     read: filePath => _read(opts, filePath),
     write: (filePath, definition, stream) => _write(opts, filePath, definition, stream),
 });

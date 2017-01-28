@@ -77,4 +77,8 @@ This has not been tested very thoroughly so there are probably bugs. Let me know
 
 For now consider this a beta at best.
 
-Unit tests are coming.
+## This module sucks
+
+Don't use it then :)
+
+Or file a bug and/or open a PR.

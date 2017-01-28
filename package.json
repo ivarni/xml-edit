@@ -1,6 +1,6 @@
 {
   "name": "xml-edit",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Modify text-nodes in XML files",
   "files": [
     "lib/"
@@ -9,9 +9,13 @@
   "scripts": {
     "build": "npm run clean && babel src -d lib",
     "clean": "rimraf lib/*",
-    "lint": "eslint src",
-    "lint:fix": "eslint --fix src",
+    "coveralls": "nyc report --reporter=text-lcov | coveralls",
+    "lint": "eslint src test",
+    "lint:fix": "eslint --fix src test",
     "prepublish": "npm run lint && npm run build",
+    "test": "cross-env NODE_ENV=test node_modules/.bin/nyc node_modules/.bin/mocha -G --compilers js:babel-core/register --require test/setup.js --recursive test",
+    "test:watch": "cross-env NODE_ENV=test node_modules/.bin/nyc node_modules/.bin/mocha -G --watch --compilers js:babel-core/register --require test/setup.js --recursive test",
+    "posttest": "nyc report --reporter=html",
     "watch": "babel -w src -d lib"
   },
   "keywords": [
@@ -30,16 +34,26 @@
   "author": "Ivar Nilsen",
   "license": "ISC",
   "dependencies": {
+    "is-stream": "^1.1.0",
     "sax": "^1.2.1"
   },
   "devDependencies": {
     "babel-cli": "^6.22.2",
+    "babel-core": "^6.22.1",
+    "babel-polyfill": "^6.22.0",
     "babel-preset-env": "^1.1.8",
+    "coveralls": "^2.11.15",
+    "cross-env": "^3.1.4",
     "eslint": "^3.14.1",
     "eslint-config-airbnb": "^14.0.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^3.0.2",
     "eslint-plugin-react": "^6.9.0",
+    "expect.js": "^0.3.1",
+    "memory-streams": "^0.1.0",
+    "mocha": "^3.2.0",
+    "mocha-lcov-reporter": "^1.2.0",
+    "nyc": "^10.1.2",
     "rimraf": "^2.5.4"
   }
 }
