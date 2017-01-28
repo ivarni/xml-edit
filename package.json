@@ -1,0 +1,45 @@
+{
+  "name": "xml-edit",
+  "version": "1.0.0",
+  "description": "Modify text-nodes in XML files",
+  "files": [
+    "lib/"
+  ],
+  "main": "lib/xml-edit.js",
+  "scripts": {
+    "build": "npm run clean && babel src -d lib",
+    "clean": "rimraf lib/*",
+    "lint": "eslint src",
+    "lint:fix": "eslint --fix src",
+    "prepublish": "npm run lint && npm run build",
+    "watch": "babel -w src -d lib"
+  },
+  "keywords": [
+    "xml",
+    "parser",
+    "writer"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivarni/xml-edit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ivarni/xml-edit/issues"
+  },
+  "homepage": "https://github.com/ivarni/xml-edit#readme",
+  "author": "Ivar Nilsen",
+  "license": "ISC",
+  "dependencies": {
+    "sax": "^1.2.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-preset-env": "^1.1.8",
+    "eslint": "^3.14.1",
+    "eslint-config-airbnb": "^14.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^3.0.2",
+    "eslint-plugin-react": "^6.9.0",
+    "rimraf": "^2.5.4"
+  }
+}
