@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/ivarni/edit-xml.svg?branch=master)](https://travis-ci.org/ivarni/edit-xml)
+[![Build Status](https://travis-ci.org/ivarni/xml-edit.svg?branch=master)](https://travis-ci.org/ivarni/xml-edit)
 [![Coverage Status](https://coveralls.io/repos/github/ivarni/xml-edit/badge.svg?branch=master)](https://coveralls.io/github/ivarni/xml-edit?branch=master)
 
 # xml-edit
