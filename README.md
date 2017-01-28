@@ -14,9 +14,9 @@ Given a file that looks like this
 ```
 <this>
     <is>
-        <yet.another>
+        <another>
             XML file
-        </yet.another>
+        </another>
     </is>
 </this>
 ```
@@ -48,8 +48,11 @@ await editor.write(path.resolve('test.xml'), xmlObject, process.stdout);
 
 ### getInstance(opts)
 
-_opts.indentation_: number of spaces to use when writing (default: `2`)
-_opts.strict_: parse XML strictly or not (default: `true`)
+_opts.indentation_: number of spaces to use when writing
+(default: `2`)
+
+_opts.strict_: parse XML strictly or not
+(default: `true`)
 
 ### instance.read(filePath)
 
@@ -58,7 +61,9 @@ _filePath_: Path to the file (doh)
 ### instance.write(filePath, xmlObject, stream)
 
 _filePath_: Path to the original file
+
 _xmlObject_: Specification of which text nodes to change
+
 _stream_: A writeable stream that the result gets sent to
 
 ## ok, so...?
@@ -68,6 +73,8 @@ _stream_: A writeable stream that the result gets sent to
 * You can't edit tagnames
 * Your attributes *will* be inlined in the tag in the result
 
-This has not been tested very thoroughly so there are probably bugs. Let me know and I'll look at it. For now consider this a beta at best.
+This has not been tested very thoroughly so there are probably bugs. Let me know and I'll look at it.
+
+For now consider this a beta at best.
 
 Unit tests are coming.
